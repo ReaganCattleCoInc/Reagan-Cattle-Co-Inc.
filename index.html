@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reagan Cattle Co. | Premium Land & Farm Services</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #0A192F;
+            --accent-blue: #1E3A8A;
+            --light-blue: #3B82F6;
+            --primary-red: #8B0000;
+            --accent-red: #DC2626;
+            --text-dark: #0F172A;
+            --text-muted: #475569;
+            --bg-light: #F8FAFC;
+            --white: #FFFFFF;
+            --gold-accent: #D4AF37;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .brand-font {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Floating Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo img {
+            height: 55px;
+            filter: drop-shadow(0px 2px 8px rgba(0,0,0,0.5));
+            transition: var(--transition);
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-red), var(--light-blue));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #E2E8F0;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.85) 0%, rgba(139, 0, 0, 0.75) 100%), 
+                        url('https://i.pinimg.com/originals/e5/ac/21/e5ac21d46ca549684438c06838954813.jpg') center/cover no-repeat fixed;
+            color: var(--white);
+            text-align: center;
+            padding: 8rem 2rem 4rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 600;
+            color: #93C5FD;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #E2E8F0;
+            margin-bottom: 2.5rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-red), var(--primary-red));
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(220, 38, 38, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Section Layouts */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header span {
+            color: var(--accent-red);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-top: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-red);
+        }
+
+        /* Split Section Layout */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .split-image-wrapper {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .split-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid var(--accent-red);
+            border-radius: 8px;
+            transform: translate(12px, 12px);
+            z-index: -1;
+        }
+
+        .split-image-wrapper img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .split-image-wrapper:hover img {
+            transform: scale(1.03);
+        }
+
+        .split-content h3 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .split-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* Features List */
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .feature-list i {
+            color: var(--accent-red);
+            background: rgba(220, 38, 38, 0.1);
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        /* Services Section */
+        .services-section {
+            background-color: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+            top: 0;
+        }
+
+        .service-card:hover {
+            top: -10px;
+            box-shadow: 0 20px 40px rgba(10, 25, 47, 0.12);
+            border-color: rgba(30, 58, 138, 0.3);
+        }
+
+        .service-img {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.08);
+        }
+
+        .service-body {
+            padding: 2rem;
+        }
+
+        .service-body h3 {
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #F1F5F9;
+            padding-bottom: 0.5rem;
+        }
+
+        .service-body p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            background: linear-gradient(180deg, var(--bg-light) 0%, #EEF2FF 100%);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            position: relative;
+            border-top: 4px solid var(--accent-red);
+            transition: var(--transition);
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .stars {
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .review-card p {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .client-info h4 {
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .client-info span {
+            font-size: 0.8rem;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .contact-section .section-header h2 {
+            color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info-boxes {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-box {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .contact-box:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-red);
+        }
+
+        .contact-box i {
+            font-size: 1.8rem;
+            color: var(--accent-red);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-box-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-box-text a, .contact-box-text p {
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .contact-box-text a:hover {
+            color: var(--white);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #050B14;
+            color: #94A3B8;
+            padding: 4rem 2rem 2rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            max-width: 400px;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--accent-red);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .split-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Can be expanded into a mobile menu */
+            }
+            .hero {
+                padding-top: 6rem;
+            }
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <img src="https://reagancattle.co/wp-content/uploads/2026/04/Logo-removebg-preview.png" alt="Reagan Cattle Co. Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="hero-subtitle">Premier Agricultural & Land Management</div>
+            <h1>Elite Ranch & Property Care Solutions</h1>
+            <p>Combining legacy ranching values with modern land clearing techniques. From high-capacity weed mowing to full-scale lot management, Reagan Cattle Co. delivers unrivaled land maintenance across Texas.</p>
+            <div class="btn-group">
+                <a href="#services" class="btn btn-primary"><i class="fas fa-hammer"></i> Our Services</a>
+                <a href="#contact" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Get an Estimate</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="home" class="home-overview">
+        <div class="container">
+            <div class="split-grid">
+                <div class="split-content" data-aos="fade-right">
+                    <span>Welcome to Reagan Cattle Co.</span>
+                    <h3>Preserving & Enhancing Texas Land Integrity</h3>
+                    <p>We provide heavy-duty agricultural operations and detailed property management designed to elevate your real estate’s utility and aesthetics. Our dedicated crew handles everything from standard maintenance to tough wilderness clearing.</p>
+                    <p>Built on precision, hard work, and deep agricultural expertise, we help land owners protect their property investments season after season.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Commercial & Residential Services</li>
+                        <li><i class="fas fa-check"></i> Heavy-Duty Equipment & Operators</li>
+                        <li><i class="fas fa-check"></i> Reliable & Timely Execution</li>
+                    </ul>
+                </div>
+                <div class="split-image-wrapper" data-aos="fade-left">
+                    <img src="https://avatars.mds.yandex.net/i?id=ae54098acdd9c40cc773f6390da368a90229e845-4032519-images-thumbs&n=13" alt="Reagan Cattle Farm">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="background-color: var(--white);">
+        <div class="container">
+            <div class="split-grid">
+                <div class="split-image-wrapper" data-aos="fade-right">
+                    <img src="https://avatars.mds.yandex.net/i?id=af9bc39aae6165cf5ecbc2246d28eefad1be3f73-5410808-images-thumbs&n=13" alt="About Reagan Cattle Co.">
+                </div>
+                <div class="split-content" data-aos="fade-left">
+                    <span>Our Legacy & Mission</span>
+                    <h3>Built On Hard Work, Integrity, & Precision</h3>
+                    <p>At Reagan Cattle Co., we treat every acre as if it were our own. Rooted in traditional Texas ranching values, our mission is to deliver comprehensive land management solutions that preserve property value and optimize usability.</p>
+                    <p>Whether you need routine brush control, intensive acreage cleanup, or specialized livestock support services, our team brings top-tier equipment and unmatched dedication to every single job site.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span>What We Do</span>
+                <h2>Our Premium Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-img">
+                        <img src="https://avatars.mds.yandex.net/i?id=47074e75d935bc261742fa72d78f1ed1359ec78b-16303231-images-thumbs&n=13" alt="Weed Mowing">
+                    </div>
+                    <div class="service-body">
+                        <h3>Weed Mowing</h3>
+                        <p>High-efficiency overgrown vegetation and brush clearing tailored for sprawling pastures, fence lines, and commercial acreages using heavy-duty machinery.</p>
+                    </div>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-img">
+                        <img src="https://avatars.mds.yandex.net/i?id=d751740a9180c40b931f1adaff863efed19bb8ef-7025901-images-thumbs&n=13" alt="Cleaning Lots">
+                    </div>
+                    <div class="service-body">
+                        <h3>Cleaning Lots</h3>
+                        <p>Complete lot prep, debris removal, and land reclamation services. We clear trees, thick brush, and obstacles to transform raw land into usable spaces.</p>
+                    </div>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-img">
+                        <img src="https://avatars.mds.yandex.net/i?id=611564960d3cad0d61c5f450c5d7d6c9c49aa18a-5587351-images-thumbs&n=13" alt="Farm Work">
+                    </div>
+                    <div class="service-body">
+                        <h3>Farm Work</h3>
+                        <p>Comprehensive agricultural and livestock support operations. From fence maintenance to pasture optimization, we provide end-to-end farm assistance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span>Client Feedback</span>
+                <h2>What Our Clients Say</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Reagan Cattle Co. cleared over 10 acres of thick cedar and overgrown weeds for us. The efficiency and quality of their machinery were unbelievable. Highly recommended!"</p>
+                    <div class="client-info">
+                        <h4>Mark Harrison</h4>
+                        <span>Canyon Lake, TX</span>
+                    </div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Prompt, communicative, and extremely hardworking crew. They made quick work of a difficult lot clearing project. Will definitely hire them again for future work."</p>
+                    <div class="client-info">
+                        <h4>Sarah Jenkins</h4>
+                        <span>Property Owner</span>
+                    </div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Zackery and his team handle our farm maintenance with standard Texas pride. Top-notch work ethic, clean execution, and fair pricing. 5 stars all around."</p>
+                    <div class="client-info">
+                        <h4>David Miller</h4>
+                        <span>Ranch Manager</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span>Get In Touch</span>
+                <h2>Contact Us Today</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-boxes" data-aos="fade-right">
+                    <div class="contact-box">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-box-text">
+                            <h4>Direct Call</h4>
+                            <a href="tel:+12108724678">+1 (210) 872-4678</a>
+                        </div>
+                    </div>
+                    <div class="contact-box">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-box-text">
+                            <h4>Email Us</h4>
+                            <a href="mailto:zackerydacamara@gmail.com">zackerydacamara@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-box-text">
+                            <h4>Location</h4>
+                            <p>2682 Colleen Dr, Canyon Lake, TX 78133</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container" data-aos="fade-left">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d443372.953095125!2d-98.26156904999999!3d29.75301945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c9d7e8cc2cd8f%3A0x5f62bb1919a5707c!2sReagan%20Cattle%20Co%20Inc.!5e0!3m2!1sen!2s!4v1787861142374!5m2!1sen!2s" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <img src="https://reagancattle.co/wp-content/uploads/2026/04/Logo-removebg-preview.png" alt="Reagan Cattle Co. Logo" style="height: 45px;">
+                    </a>
+                    <p>Providing premium farm services, acreage mowing, and lot clearing solutions with an emphasis on craftsmanship and structural integrity across Texas.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#reviews"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>GMB Navigation</h4>
+                    <ul>
+                        <li><a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d443372.953095125!2d-98.26156904999999!3d29.75301945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c9d7e8cc2cd8f%3A0x5f62bb1919a5707c!2sReagan%20Cattle%20Co%20Inc.!5e0!3m2!1sen!2s!4v1787861142374!5m2!1sen!2s" target="_blank"><i class="fas fa-map-pin"></i> Google Map Directions</a></li>
+                        <li><a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d443372.953095125!2d-98.26156904999999!3d29.75301945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c9d7e8cc2cd8f%3A0x5f62bb1919a5707c!2sReagan%20Cattle%20Co%20Inc.!5e0!3m2!1sen!2s!4v1787861142374!5m2!1sen!2s" target="_blank"><i class="fas fa-star"></i> Leave a Review</a></li>
+                        <li><a href="#contact"><i class="fas fa-headset"></i> Customer Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Reagan Cattle Co. All rights reserved. Designed for excellence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>
